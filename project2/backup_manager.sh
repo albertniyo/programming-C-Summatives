@@ -109,12 +109,13 @@ delete_backup(){
     fi
 
     read -r -p "Are you sure you want to delete this backup? (y/n) " confirm
-    if [ "$confirm" = "yes" ]; then
+    if [ "$confirm" = "y" ]; then
         rm -rf "${current_backups[$((choice-1))]}"
         echo "backup ${current_backups[$((choice-1))]} deleted successfully"
         log_message "backup ${current_backups[$((choice-1))]} deleted successfully"
         echo
     else
+        echo "delete cancelled"
         log_message "backup ${current_backups[$((choice-1))]} delete cancelled"
         echo
         return
