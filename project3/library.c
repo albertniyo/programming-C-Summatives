@@ -50,8 +50,8 @@ void save_books_to_file(){
         return;
     }
     // writing books
-    if (fwrite(&book_counts, sizeof(int), 1, fp) != 1 || 
-    fwrite(books, sizeof(Book), book_counts, fp) != (sizeof(Book) * book_counts)) {
+    if (fwrite(&book_counts, sizeof(int), 1, fp) != 1 ||
+        fwrite(books, sizeof(Book), book_counts, fp) != (size_t)book_counts) {
         printf("error writing books to file %s\n", book_file);
     } else {
         printf("saved %d book(s) to %s \n", book_counts, book_file);
